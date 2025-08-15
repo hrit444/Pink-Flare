@@ -44,6 +44,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+      z-index: 990;
 
     .center-float-img {
       @include make-center();
@@ -197,14 +198,14 @@ body {
 
     .pink-flare{
       position: absolute;
-      transform: translate(-50%, 0%) rotate(30deg);
-      transform-origin: 0% 50%;
+      transform: translate(-50%, 0%) rotate(50deg);
+      transform-origin: 0% 70%;
       bottom: -150%;
       color: white;
       left: 50%;
       z-index: 999;
       text-transform: uppercase;
-      font-size: 10vw;
+      font-size: 11.5vw;
     }
 
     .pink-div{
@@ -212,7 +213,6 @@ body {
       width: 33vw;
       background-color: #D5A7B4;
       position: absolute;
-      top: 0;
       top: 100%;
       padding: 4vw;
       padding-top: 12vw;
@@ -310,10 +310,12 @@ body {
     }
   }
 
-  img {
+  .bg-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    scale: 1.9;
+    z-index: -1;
   }
 }
 
