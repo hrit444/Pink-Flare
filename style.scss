@@ -25,17 +25,23 @@ html,
 body {
   height: 100%;
   width: 100%;
-  pointer-events: none;
 }
+
+
 
 .main {
   width: 100%;
+  // cursor: none;
+  cursor: url("./cursor.svg") 6 6, auto;
+  pointer-events: none;
 }
+
 .home {
   height: 100vh;
   width: 100%;
   overflow: hidden;
   position: relative;
+  // display: none !important;
 
   .overlay {
     width: 100%;
@@ -44,7 +50,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-      z-index: 990;
+    z-index: 990;
 
     .center-float-img {
       @include make-center();
@@ -108,6 +114,7 @@ body {
           .mini-box {
             width: 16.66667%;
             height: 0.8vw;
+            background-color: #000;
           }
         }
 
@@ -159,7 +166,7 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        gap: .3vw;
+        gap: 0.3vw;
         width: 6.5vw;
 
         img {
@@ -186,21 +193,22 @@ body {
       }
     }
 
-    .gallery{
+    .gallery {
       position: absolute;
       transform: translate(-50%, 0%);
       bottom: -1%;
       left: 50%;
       z-index: 999;
       text-transform: uppercase;
-      font-size: 10vw;
+      font-size: 12vw;
+      color: #313131;
     }
 
-    .pink-flare{
+    .pink-flare {
       position: absolute;
       transform: translate(-50%, 0%) rotate(50deg);
       transform-origin: 0% 70%;
-      bottom: -150%;
+      bottom: -50%;
       color: white;
       left: 50%;
       z-index: 999;
@@ -208,33 +216,32 @@ body {
       font-size: 11.5vw;
     }
 
-    .pink-div{
+    .pink-div {
       height: 32vw;
       width: 33vw;
-      background-color: #D5A7B4;
+      background-color: #d5a7b4;
       position: absolute;
       top: 100%;
       padding: 4vw;
       padding-top: 12vw;
       z-index: 998;
 
-      .info-sec{
-        
-        .info{
-          h4{
+      .info-sec {
+        .info {
+          h4 {
             padding-left: 2vw;
-            line-height: .9vw;
+            line-height: 0.9vw;
             margin-top: 1vw;
           }
         }
       }
 
-      .color-code{
-        h4{
-          line-height: .9vw;
+      .color-code {
+        h4 {
+          line-height: 0.9vw;
         }
 
-        h3{
+        h3 {
           font-family: num;
           font-size: 2.4vw;
           line-height: 2.2vw;
@@ -243,14 +250,14 @@ body {
       }
     }
 
-    .gola{
+    .gola {
       height: 8vw;
       width: 8vw;
       z-index: 9999;
       @include make-center();
       top: 150%;
       border-radius: 50%;
-      background-color: #D5A7B4;
+      background-color: #d5a7b4;
     }
 
     .small-circle {
@@ -322,5 +329,248 @@ body {
 .second {
   width: 100%;
   height: 100vh;
-  background-color: rgb(90, 90, 215);
+  position: relative;
+  overflow: hidden;
+
+  .t-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    padding: 2.8vw 4vw;
+
+    .left {
+      font-size: 1.25vw;
+      line-height: 1.3vw;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      width: 5.6vw;
+      height: 2.3vw;
+
+      .up {
+        width: 100%;
+        height: 100%;
+        display: flex;
+
+        .mini-box {
+          width: 16.66667%;
+          height: 0.8vw;
+          background-color: #000;
+        }
+      }
+
+      .down {
+        display: flex;
+        justify-content: space-between;
+
+        h4 {
+          font-size: 0.9vw;
+          font-family: num;
+          line-height: 0.9vw;
+        }
+      }
+    }
+  }
+
+  .b-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    padding: 2.8vw 4vw;
+
+    .left {
+      height: fit-content;
+      display: flex;
+      width: 3.3vw;
+      gap: 0.3vw;
+
+      img {
+        height: 1vw;
+        width: 1.5vw;
+        background-size: cover;
+      }
+
+      h4 {
+        font-family: num;
+        font-size: 1.05vw;
+        padding-top: 0.2vw;
+      }
+    }
+
+    .right {
+      height: fit-content;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.3vw;
+      width: 6.5vw;
+
+      img {
+        height: 1vw;
+        width: 100%;
+        background-size: cover;
+      }
+
+      h4 {
+        font-family: num;
+        display: flex;
+        align-items: center;
+        font-size: 2.4vw;
+        line-height: 1.7vw;
+        gap: 1;
+        font-weight: 100;
+
+        span {
+          font-family: num;
+          margin: 0.3vw 0.05vw 0 0.4vw;
+          font-size: 1.4vw;
+        }
+      }
+    }
+  }
+
+  .up-sec {
+    height: 66.5%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    h1 {
+      text-transform: uppercase;
+      position: absolute;
+      color: white;
+      z-index: 999;
+      font-size: 30vw;
+      font-weight: 100;
+      line-height: 25vw;
+      letter-spacing: -2vw;
+      bottom: -6%;
+      left: 100%;
+    }
+
+    .circle {
+      height: 10vw;
+      width: 10vw;
+      background-color: red;
+      border-radius: 50%;
+      // @include make-center();
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 150%;
+    }
+
+    .cir1 {
+      background-color: #d5a7b4;
+      left: 42%;
+      z-index: 998;
+    }
+
+    .cir2 {
+      background-color: #b4aad5;
+      left: 58%;
+      z-index: 997;
+    }
+
+    .bar {
+      position: absolute;
+      z-index: 999;
+      width: 20vw;
+      height: 100%;
+      top: 150%;
+    }
+
+    .bar2 {
+      position: absolute;
+      height: 50vw;
+      width: 10vw;
+      top: 71%;
+      transform-origin: right center;
+      transform: scaleX(0);
+    }
+
+    .bar3 {
+      position: absolute;
+      height: 50vw;
+      width: 15vw;
+      top: 86%;
+      transform-origin: right center;
+      transform: scaleX(0);
+    }
+  }
+
+  .down-sec {
+    height: 30%;
+    width: 100%;
+    overflow: hidden;
+    border-top: 0.5px solid black;
+    border-bottom: 0.5px solid black;
+    position: relative;
+
+    h2 {
+      position: absolute;
+      font-size: 4vw;
+      line-height: 4vw;
+      top: 13%;
+      background-color: #fff;
+      left: 3.5%;
+    }
+
+    .no-2,
+    .no-3,
+    .no-block {
+      top: 37%;
+      opacity: 1;
+      color: black;
+    }
+
+    .no-block {
+      background-color: #fff;
+      color: white;
+      z-index: 9999;
+    }
+
+    .block {
+      background-color: white;
+      height: 2.5vw;
+      width: 8vw;
+      left: 1%;
+      position: absolute;
+      z-index: 99999;
+    }
+
+    .text1,
+    .text2 {
+      text-transform: uppercase;
+      @include make-center();
+      width: 100%;
+      // opacity: 0;
+
+      h3 {
+        text-align: center;
+        font-size: 3vw;
+        line-height: 4vw;
+      }
+    }
+
+    .text2 {
+      opacity: 0;
+    }
+  }
+
+  .bottom-bar {
+    height: 3.5%;
+    width: 100%;
+  }
 }

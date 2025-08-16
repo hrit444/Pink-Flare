@@ -17,11 +17,12 @@ html,
 body {
   height: 100%;
   width: 100%;
-  pointer-events: none;
 }
 
 .main {
   width: 100%;
+  cursor: url("./cursor.svg") 6 6, auto;
+  pointer-events: none;
 }
 
 .home {
@@ -99,6 +100,7 @@ body {
 .home .overlay .t-nav .right .up .mini-box {
   width: 16.66667%;
   height: 0.8vw;
+  background-color: #000;
 }
 .home .overlay .t-nav .right .down {
   display: flex;
@@ -172,13 +174,14 @@ body {
   left: 50%;
   z-index: 999;
   text-transform: uppercase;
-  font-size: 10vw;
+  font-size: 12vw;
+  color: #313131;
 }
 .home .overlay .pink-flare {
   position: absolute;
   transform: translate(-50%, 0%) rotate(50deg);
   transform-origin: 0% 70%;
-  bottom: -150%;
+  bottom: -50%;
   color: white;
   left: 50%;
   z-index: 999;
@@ -188,7 +191,7 @@ body {
 .home .overlay .pink-div {
   height: 32vw;
   width: 33vw;
-  background-color: #D5A7B4;
+  background-color: #d5a7b4;
   position: absolute;
   top: 100%;
   padding: 4vw;
@@ -219,7 +222,7 @@ body {
   transform: translate(-50%, -50%);
   top: 150%;
   border-radius: 50%;
-  background-color: #D5A7B4;
+  background-color: #d5a7b4;
 }
 .home .overlay .small-circle {
   height: 60vw;
@@ -287,5 +290,220 @@ body {
 .second {
   width: 100%;
   height: 100vh;
-  background-color: rgb(90, 90, 215);
+  position: relative;
+  overflow: hidden;
+}
+.second .t-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  padding: 2.8vw 4vw;
+}
+.second .t-nav .left {
+  font-size: 1.25vw;
+  line-height: 1.3vw;
+}
+.second .t-nav .right {
+  display: flex;
+  flex-direction: column;
+  width: 5.6vw;
+  height: 2.3vw;
+}
+.second .t-nav .right .up {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.second .t-nav .right .up .mini-box {
+  width: 16.66667%;
+  height: 0.8vw;
+  background-color: #000;
+}
+.second .t-nav .right .down {
+  display: flex;
+  justify-content: space-between;
+}
+.second .t-nav .right .down h4 {
+  font-size: 0.9vw;
+  font-family: num;
+  line-height: 0.9vw;
+}
+.second .b-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  padding: 2.8vw 4vw;
+}
+.second .b-nav .left {
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  width: 3.3vw;
+  gap: 0.3vw;
+}
+.second .b-nav .left img {
+  height: 1vw;
+  width: 1.5vw;
+  background-size: cover;
+}
+.second .b-nav .left h4 {
+  font-family: num;
+  font-size: 1.05vw;
+  padding-top: 0.2vw;
+}
+.second .b-nav .right {
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.3vw;
+  width: 6.5vw;
+}
+.second .b-nav .right img {
+  height: 1vw;
+  width: 100%;
+  background-size: cover;
+}
+.second .b-nav .right h4 {
+  font-family: num;
+  display: flex;
+  align-items: center;
+  font-size: 2.4vw;
+  line-height: 1.7vw;
+  gap: 1;
+  font-weight: 100;
+}
+.second .b-nav .right h4 span {
+  font-family: num;
+  margin: 0.3vw 0.05vw 0 0.4vw;
+  font-size: 1.4vw;
+}
+.second .up-sec {
+  height: 66.5%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.second .up-sec h1 {
+  text-transform: uppercase;
+  position: absolute;
+  color: white;
+  z-index: 999;
+  font-size: 30vw;
+  font-weight: 100;
+  line-height: 25vw;
+  letter-spacing: -2vw;
+  bottom: -6%;
+  left: 100%;
+}
+.second .up-sec .circle {
+  height: 10vw;
+  width: 10vw;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 150%;
+}
+.second .up-sec .cir1 {
+  background-color: #d5a7b4;
+  left: 42%;
+  z-index: 998;
+}
+.second .up-sec .cir2 {
+  background-color: #b4aad5;
+  left: 58%;
+  z-index: 997;
+}
+.second .up-sec .bar {
+  position: absolute;
+  z-index: 999;
+  width: 20vw;
+  height: 100%;
+  top: 150%;
+}
+.second .up-sec .bar2 {
+  position: absolute;
+  height: 50vw;
+  width: 10vw;
+  top: 71%;
+  transform-origin: right center;
+  transform: scaleX(0);
+}
+.second .up-sec .bar3 {
+  position: absolute;
+  height: 50vw;
+  width: 15vw;
+  top: 86%;
+  transform-origin: right center;
+  transform: scaleX(0);
+}
+.second .down-sec {
+  height: 30%;
+  width: 100%;
+  overflow: hidden;
+  border-top: 0.5px solid black;
+  border-bottom: 0.5px solid black;
+  position: relative;
+}
+.second .down-sec h2 {
+  position: absolute;
+  font-size: 4vw;
+  line-height: 4vw;
+  top: 13%;
+  background-color: #fff;
+  left: 3.5%;
+}
+.second .down-sec .no-2,
+.second .down-sec .no-3,
+.second .down-sec .no-block {
+  top: 37%;
+  opacity: 1;
+  color: black;
+}
+.second .down-sec .no-block {
+  background-color: #fff;
+  color: white;
+  z-index: 9999;
+}
+.second .down-sec .block {
+  background-color: white;
+  height: 2.5vw;
+  width: 8vw;
+  left: 1%;
+  position: absolute;
+  z-index: 99999;
+}
+.second .down-sec .text1,
+.second .down-sec .text2 {
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.second .down-sec .text1 h3,
+.second .down-sec .text2 h3 {
+  text-align: center;
+  font-size: 3vw;
+  line-height: 4vw;
+}
+.second .down-sec .text2 {
+  opacity: 0;
+}
+.second .bottom-bar {
+  height: 3.5%;
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
