@@ -1,37 +1,43 @@
-gsap.registerPlugin(ScrollTrigger);
+function scrollTriggerFunction() {
+  gsap.registerPlugin(ScrollTrigger);
 
-const locoScroll = new LocomotiveScroll({
-  el: document.querySelector(".main"),
-  smooth: true,
-  multiplier: 0.4, // < 1 = slower scroll, > 1 = faster (default = 1)
-  inertia: 0.9,
-  lerp: 0.1,
-});
-locoScroll.on("scroll", ScrollTrigger.update);
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector(".main"),
+    smooth: true,
+    multiplier: 0.4, // < 1 = slower scroll, > 1 = faster (default = 1)
+    inertia: 0.9,
+    lerp: 0.1,
+  });
+  locoScroll.on("scroll", ScrollTrigger.update);
 
-ScrollTrigger.scrollerProxy(".main", {
-  scrollTop(value) {
-    return arguments.length
-      ? locoScroll.scrollTo(value, 0, 0)
-      : locoScroll.scroll.instance.scroll.y;
-  },
-  getBoundingClientRect() {
-    return {
-      top: 0,
-      left: 0,
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-  },
-  pinType: document.querySelector(".main").style.transform
-    ? "transform"
-    : "fixed",
-});
+  ScrollTrigger.scrollerProxy(".main", {
+    scrollTop(value) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+    pinType: document.querySelector(".main").style.transform
+      ? "transform"
+      : "fixed",
+  });
 
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-ScrollTrigger.refresh();
-    
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+  ScrollTrigger.refresh();
+}
+
+scrollTriggerFunction()
+
 function homePageAnimation() {
+  let bottomValue = window.innerWidth <= 600 ? "15.3%" : "-2%";
+
   var tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".home",
@@ -189,7 +195,7 @@ function homePageAnimation() {
     .to(
       ".overlay .pink-flare",
       {
-        bottom: "-2%",
+        bottom: bottomValue,
         rotate: 0,
         duration: 5,
         delay: -0.8,
@@ -255,7 +261,7 @@ function homePageAnimation() {
   tl.timeScale(0.5);
 }
 
-homePageAnimation();
+homePageAnimation()
 
 function secondPageAnimation() {
   var tl = gsap.timeline({
@@ -270,15 +276,18 @@ function secondPageAnimation() {
     },
   });
 
+  //circles going up
+  
   tl.to(".up-sec .circle", {
-    top: "50%",
-    scale: 1.5,
-    duration: 8,
-    stagger: 0.15,
-    ease: Power1,
-  })
-    .to(
-      ".up-sec .cir1",
+      top: "50%",
+      scale: 1.5,
+      duration: 8,
+      stagger: 0.15,
+      ease: Power1,
+    }, "circle-up")
+
+    //circles merging
+    .to(".up-sec .cir1",
       {
         left: "45%",
         ease: Power1,
@@ -286,8 +295,7 @@ function secondPageAnimation() {
       },
       "merge"
     )
-    .to(
-      ".up-sec .cir2",
+    .to(".up-sec .cir2",
       {
         left: "55%",
         ease: Power1,
@@ -295,8 +303,7 @@ function secondPageAnimation() {
       },
       "merge"
     )
-    .to(
-      ".up-sec .circle",
+    .to(".up-sec .circle",
       {
         duration: 3,
         left: "50%",
@@ -305,46 +312,65 @@ function secondPageAnimation() {
       },
       "merge"
     )
-    .to(".up-sec .cir2", { scale: 0, opacity: 0 })
-    .set(".down-sec", { borderTop: 0, delay: 3, duration: 1 })
+    .to(".up-sec .cir2", {
+      scale: 0, opacity: 0 
+    })
+    //disappearing borders
+    .set(".down-sec", {
+      borderTop: 0, delay: 3, duration: 1 
+    }, "dis-apr-border")
+    .set(".up-sec", {
+      borderTop: 0, delay: 3, duration: 1 
+    }, "dis-apr-border")
+
+    //rotating circle
     .to(".up-sec .cir1", {
-      background: "linear-gradient(to right, #D5A7B4, #afa3d9ff)",
+      backgroundColor: "#afa3d9ff",
+      rotate: "360deg",
       duration: 2,
       ease: Power1,
     })
-    .to(
-      ".up-sec .cir1",
+
+    //circle sizing
+    .to(".up-sec .cir1",
       {
-        scale: 14,
-        background: "linear-gradient(to right, #D5A7B4, #afa3d9ff)",
+        scale: 20,
+        backgroundColor: "#afa3d9ff",
         duration: 8,
         ease: Power1,
       },
       "big-circle"
-    )
+    );
 
-    .to(
-      ".change-text-color-2",
-      {
-        color: "white",
-        duration: 0.5, // fade time in seconds
-        ease: "power1.inOut",
-      },
-      "-=2"
-    )
+  //changeing color pallete color
+    function changeColor(tl){
+      let changeColor = window.innerWidth <= 600 ? "black" : "white"
+      tl.to(
+        ".change-text-color-2",
+        {
+          color: changeColor,
+          duration: 0.5, // fade time in seconds
+          ease: "power1.inOut",
+        },
+        "-=2"
+      )
+      .to(
+        ".second .mini-box",
+        { backgroundColor: changeColor, duration: 1, ease: "power1.inOut" },
+        "-=2"
+      )
 
-    //changeing color pallete color
-    .to(
-      ".second .mini-box",
-      { backgroundColor: "white", duration: 1, ease: "power1.inOut" },
-      "-=2"
-    )
+      return tl
+    }
+
+    changeColor(tl)
 
     // marquee text
-    .to(
+    let t1 = window.innerWidth <= 600 ? "-300%" : "-150%"
+    tl.to(
       ".up-sec h1",
       {
-        left: "-150%",
+        left: t1,
         duration: 15,
         delay: -1,
         ease: Power1.ease,
@@ -352,96 +378,96 @@ function secondPageAnimation() {
       "text-marquee"
     )
 
-    //bottom texts
-    .to(
-      ".down-sec .text1",
-      {
-        opacity: 0,
-        duration: 2.5,
-        ease: Power1,
-      },
-      "text-marquee"
-    )
+  //bottom texts
+  .to(
+    ".down-sec .text1",
+    {
+      opacity: 0,
+      duration: 2.5,
+      ease: Power1,
+    },
+    "text-marquee"
+  )
+  .to(
+    ".down-sec .text2",
+    {
+      opacity: 1,
+      duration: 5,
+      delay: 2.8,
+      ease: Power1.ease,
+    },
+    "text-marquee"
+  )
 
-    .to(
-      ".down-sec .text2",
-      {
-        opacity: 1,
-        duration: 5,
-        delay: 2.8,
-        ease: Power1.ease,
-      },
-      "text-marquee"
-    )
-
-    .to(
-      ".down-sec .no-1",
-      {
-        top: "-10%",
-        duration: 3,
-        delay: 1,
-        ease: Power1,
-      },
-      "big-circle"
-    )
-
-    //no 2
-    .set(".down-sec .no-2", { color: "#000" }, "text-marquee")
-    .to(
-      ".down-sec .no-2",
-      {
-        top: "15%",
-        duration: 4,
-        delay: 1.5,
-        ease: Power1,
-      },
-      "big-circle"
-    )
-
-    // .set(".down-sec .no-2", { color: "#000"}, "text-marquee")
-    //no 2 going up to disappear
-    .to(
-      ".down-sec .no-2",
-      {
-        top: "-10%",
-        duration: 4,
-        delay: 17,
-        ease: Power1,
-      },
-      "big-circle"
-    )
-    //no 3 coming
-    .set(".down-sec .no-3", { color: "#000" }, "text-marquee")
-    .to(
-      ".down-sec .no-3",
-      {
-        top: "15%",
-        duration: 3,
-        delay: 9.5,
-        ease: Power1,
-      },
-      "text-marquee"
-    )
-
-    .to(".bar", {
-      top: 0,
-      stagger: 0.3,
-      delay: -1.5,
+  //number counting animation
+  .to(".down-sec .no-1",
+    {
+      top: "-10%",
       duration: 3,
-    })
-    .to(".bar2", {
-      // width: "10vw",
-      scaleX: 1,
+      delay: 1,
+      ease: Power1,
+    },
+    "big-circle"
+  )
+
+  //no 2
+  .set(".down-sec .no-2", { color: "#000" }, "text-marquee")
+  .to(".down-sec .no-2",
+    {
+      top: "15%",
       duration: 4,
-      delay: -1.5,
-    })
-    .to(".bar3", {
-      // width: "15vw",
-      scaleX: 1,
-      delay: -2,
+      delay: 1.5,
+      ease: Power1,
+    },
+    "big-circle"
+  )
+  //no 2 going up to disappear
+  .to(".down-sec .no-2",
+    {
+      top: "-10%",
       duration: 4,
-    });
+      delay: 17,
+      ease: Power1,
+    },
+    "big-circle"
+  )
+  //no 3 coming
+  .set(".down-sec .no-3", { color: "#000" }, "text-marquee")
+  .to(".down-sec .no-3",
+    {
+      top: "15%",
+      duration: 3,
+      delay: 9.5,
+      ease: Power1,
+    },
+    "text-marquee"
+  )
+
+  //bar coming
+  .to(".bar", {
+    top: 0,
+    stagger: 0.3,
+    delay: -1.5,
+    duration: 3,
+  })
+  .to(".bar2", {
+    scaleX: 1,
+    duration: 4,
+    delay: -1.5,
+  })
+  .to(".bar3", {
+    scaleX: 1,
+    delay: -2,
+    duration: 4,
+  })
+
+  .to(".second .scroll-mobile h2",{
+      x: -3230,
+      delay: -50,
+      duration: 50,
+      ease: Power1
+    })
   tl.timeScale(0.5);
 }
 
-secondPageAnimation();
+secondPageAnimation()
