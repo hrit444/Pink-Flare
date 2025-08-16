@@ -30,6 +30,7 @@ body {
   width: 100%;
   overflow: hidden;
   position: relative;
+  display: none !important;
 }
 .home .overlay {
   width: 100%;
@@ -457,8 +458,8 @@ body {
   height: 30%;
   width: 100%;
   overflow: hidden;
-  border-top: 0.5px solid black;
-  border-bottom: 0.5px solid black;
+  border-top: 0.5px solid #CDCDCD;
+  border-bottom: 0.5px solid #CDCDCD;
   position: relative;
 }
 .second .down-sec h2 {
@@ -510,6 +511,40 @@ body {
 .second .bottom-bar {
   height: 3.5%;
   width: 100%;
+  position: relative;
+  align-items: center;
+}
+.second .bottom-bar .animation-container {
+  display: flex;
+  background-color: #fff;
+  height: 2vw;
+  width: 100%;
+  align-items: center;
+  text-transform: uppercase;
+  position: absolute;
+  border-left: 0.5px solid #CDCDCD;
+}
+.second .bottom-bar .animation-container .con-circle {
+  background-color: #494949;
+  height: 0.4vw;
+  width: 0.4vw;
+  border-radius: 50%;
+  margin: 0 1vw;
+}
+.second .bottom-bar .animation-container h4 {
+  font-family: num;
+  color: #4F4F4F;
+  font-size: 1.1vw;
+  line-height: 1.1vw;
+  font-weight: 100;
+}
+.second .bottom-bar .block {
+  position: absolute;
+  width: 3.5vw;
+  height: 2vw;
+  right: 0;
+  background-color: white;
+  border-left: 0.5px solid #CDCDCD;
 }
 
 @media (max-width: 600px) {
@@ -676,7 +711,7 @@ body {
     width: 100%;
     overflow: hidden;
     position: relative;
-    border-top: 0.5px solid #000;
+    border-top: 0.5px solid #CDCDCD;
   }
   .second .up-sec h1 {
     font-size: 50vw;

@@ -340,7 +340,13 @@ function secondPageAnimation() {
         ease: Power1,
       },
       "big-circle"
-    );
+    )
+    .to(".bottom-bar .line-2",{
+      left: "4%",
+      duration: 12,
+      delay: -9,
+      ease: Power1.ease
+    })
 
   //changeing color pallete color
     function changeColor(tl){
@@ -460,6 +466,13 @@ function secondPageAnimation() {
     delay: -2,
     duration: 4,
   })
+
+  .to(".bottom-bar .line-3",{
+      left: "4%",
+      duration: 13,
+      delay: -15.5,
+      ease: Power1.ease
+    })
 
   .to(".second .scroll-mobile h2",{
       x: -3230,
