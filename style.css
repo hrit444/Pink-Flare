@@ -30,7 +30,6 @@ body {
   width: 100%;
   overflow: hidden;
   position: relative;
-  display: none !important;
 }
 .home .overlay {
   width: 100%;
