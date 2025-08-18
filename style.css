@@ -1,10 +1,10 @@
 @font-face {
   font-family: mainText;
-  src: url(./font-0c17f632-5d21-476e-ae88-72494612b8f0.ttf);
+  src: url(./font-0c17f632-5d21-476e-ae88-72494612b8f0.woff2);
 }
 @font-face {
   font-family: num;
-  src: url(./font-445153ca-d1f5-4c24-9d71-080146a71e01.ttf);
+  src: url(./font-445153ca-d1f5-4c24-9d71-080146a71e01.woff2);
 }
 * {
   padding: 0;
